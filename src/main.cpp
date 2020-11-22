@@ -16,7 +16,5 @@ int main(int argc, char* args[])
         eventRunner->gameLoop();
     }
 
-    eventRunner->close();
-
     return 0;
 }

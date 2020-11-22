@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Pacman.hpp"
-#include "Ghost.hpp"
+#include "pacman/Ghost.hpp"
+#include "pacman/Pacman.hpp"
+#include "pacman/SpriteManager.hpp"
 
 #include <memory>
 #include <SDL2/SDL.h>
@@ -15,7 +16,7 @@ class Board
 {
 public:
     
-    Board() = default;
+    Board();
     ~Board() = default;
 
     //Screen dimension constants
@@ -23,6 +24,9 @@ public:
     static const int HEIGHT = 864;
 
     bool checkCollision();
+    bool init();
+    void close();
+    SDL_Renderer* getRenderer();
 
 private:
    
@@ -33,6 +37,12 @@ private:
     std::unique_ptr<Ghost> pinky;
     std::unique_ptr<Ghost> inky;
     std::unique_ptr<Ghost> clyde;
+    
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    SpriteManager* spriteManager;
+    
+    bool initSpriteManager();
 
 };
 
