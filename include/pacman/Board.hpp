@@ -25,7 +25,7 @@ public:
 
     bool checkCollision();
     bool init();
-    void close();
+    void release();
     SDL_Renderer* getRenderer();
 
 private:
@@ -40,7 +40,7 @@ private:
     
     SDL_Window* window;
     SDL_Renderer* renderer;
-    SpriteManager* spriteManager;
+    std::unique_ptr<SpriteManager> spriteManager;
     
     bool initSpriteManager();
 

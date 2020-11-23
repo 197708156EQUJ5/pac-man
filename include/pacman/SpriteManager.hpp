@@ -13,7 +13,7 @@ class SpriteManager
 {
     public:
 
-        SpriteManager();
+        SpriteManager(SDL_Renderer* renderer);
         ~SpriteManager() = default;
 
         bool loadMedia();

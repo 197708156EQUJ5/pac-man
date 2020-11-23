@@ -87,6 +87,7 @@ bool Board::checkCollision()
 
 bool Board::initSpriteManager()
 {
+    spriteManager = std::make_unique<SpriteManager>(this->renderer);
     return spriteManager->loadMedia();
 }
 
@@ -95,7 +96,7 @@ SDL_Renderer* Board::getRenderer()
     return renderer;
 }
 
-void Board::close()
+void Board::release()
 {
     //Free loaded images
     //atomTexture.free();

@@ -24,9 +24,9 @@ public:
 private:
     
     SDL_Renderer* renderer = NULL;
-    Board* board = NULL;
+    std::unique_ptr<Board> board;
 
-    void close(); 
+    void release(); 
 };
 
 } // namespace pacman

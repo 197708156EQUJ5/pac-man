@@ -5,7 +5,7 @@ namespace pacman
 
 const std::string SpriteManager::SPRITE_SHEET("resources/pacman-spritesheet.png");
 
-SpriteManager::SpriteManager() :
+SpriteManager::SpriteManager(SDL_Renderer* renderer) :
     spriteSheetTexture(NULL),
     renderer(renderer)
 {

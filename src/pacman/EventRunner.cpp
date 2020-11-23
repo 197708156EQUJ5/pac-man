@@ -5,12 +5,13 @@ namespace pacman
 
 EventRunner::~EventRunner()
 {
-    board->close();
-    close();
+    board->release();
+    release();
 }
 
 bool EventRunner::init()
 {
+    board = std::make_unique<Board>();
     if (board->init())
     {
         renderer = board->getRenderer();
@@ -28,7 +29,7 @@ void EventRunner::gameLoop()
 
     while(!quit)
     {
-        SDL_SetRenderDrawColor(renderer, 0xa9, 0xa9, 0xa9, 0xFF);
+        SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
         SDL_RenderClear(renderer);
 
         
@@ -43,7 +44,7 @@ void EventRunner::gameLoop()
                 case SDL_KEYUP:
                     //PrintKeyInfo( &event.key );
                     break;
-                /* SDL_QUIT event (window close) */
+                /* SDL_QUIT event (window release) */
                 case SDL_QUIT:
                     quit = 1;
                     break;
@@ -57,7 +58,7 @@ void EventRunner::gameLoop()
     }
 }
 
-void EventRunner::close()
+void EventRunner::release()
 {
     renderer = NULL;
 }
