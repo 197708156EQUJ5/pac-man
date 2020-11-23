@@ -27,6 +27,7 @@ public:
     bool init();
     void release();
     SDL_Renderer* getRenderer();
+    void paintComponents();
 
 private:
    
@@ -40,6 +41,7 @@ private:
     
     SDL_Window* window;
     SDL_Renderer* renderer;
+    SDL_Texture* texture;
     std::unique_ptr<SpriteManager> spriteManager;
     
     bool initSpriteManager();

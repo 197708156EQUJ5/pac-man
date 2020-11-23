@@ -78,6 +78,8 @@ bool Board::init()
         success = false;
     }
 
+    //pacman = std::make_unique<Pacman>();
+
     return success;    
 }
 
@@ -88,7 +90,27 @@ bool Board::checkCollision()
 bool Board::initSpriteManager()
 {
     spriteManager = std::make_unique<SpriteManager>(this->renderer);
-    return spriteManager->loadMedia();
+    spriteManager->loadMedia();
+    texture = spriteManager->getSpriteSheetTexture();
+
+    return true;
+}
+
+void Board::paintComponents()
+{
+    std::cout << "paint" << std::endl;
+    SDL_Rect* pinky;
+
+    pinky->x = 0;
+    pinky->y = 400;
+    pinky->w = 100;
+    pinky->y = 100;
+
+    SDL_Rect renderQuad = { 0, 0, 600, 400 };
+
+    //Render to screen
+    std::cout << "RenderCopy" << std::endl;
+    SDL_RenderCopy(renderer, texture, pinky, &renderQuad);
 }
 
 SDL_Renderer* Board::getRenderer()

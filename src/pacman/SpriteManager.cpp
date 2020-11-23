@@ -17,7 +17,7 @@ bool SpriteManager::loadMedia()
 
     SDL_Surface* loadedSurface = IMG_Load(SPRITE_SHEET.c_str());
 
-    if(loadedSurface == NULL)
+    if (loadedSurface == NULL)
     {
         printf("Unable to load image %s! SDL_image Error: %s\n", SPRITE_SHEET.c_str(), IMG_GetError());
     }
@@ -43,6 +43,11 @@ bool SpriteManager::loadMedia()
     }
 
     return success;
+}
+
+SDL_Texture* SpriteManager::getSpriteSheetTexture()
+{
+    return spriteSheetTexture;
 }
 
 } // namespace pacman

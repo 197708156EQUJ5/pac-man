@@ -17,6 +17,7 @@ class SpriteManager
         ~SpriteManager() = default;
 
         bool loadMedia();
+        SDL_Texture* getSpriteSheetTexture();
 
     private:
 

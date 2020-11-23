@@ -27,11 +27,10 @@ void EventRunner::gameLoop()
     bool quit = false;
     SDL_Event event;
 
-    while(!quit)
+    while (!quit)
     {
         SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
         SDL_RenderClear(renderer);
-
         
         //Handle events on queue
         while(SDL_PollEvent(&event) != 0)
@@ -50,7 +49,8 @@ void EventRunner::gameLoop()
                     break;
                 default:
                     break;
-            }            
+            }
+            board->paintComponents();
         }
         
         //Update screen
